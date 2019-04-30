@@ -34,7 +34,7 @@ public class MakeMyTrip_Test extends BaseDriver{
 		DOMConfigurator.configure("log4j.xml");
 	}
 	
-	@Test
+	@Test//(retryAnalyzer = org.automationlabs.utils.RetryAnalyzer.class)
 	public void TC_01_Verify_MMT_Home_Page() {
 		Log.startTestCase("TC_01_Verify_MMT_Home_Page");
 		generic.get(URL);

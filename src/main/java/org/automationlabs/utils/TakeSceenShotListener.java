@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 import org.automationlabs.core.BaseDriver;
-import org.automationlabs.core.GenericFunctions;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;

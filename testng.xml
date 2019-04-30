@@ -3,6 +3,7 @@
 <suite name="Assignment Second" verbose="1">
 	<listeners>
 		<listener class-name = "org.automationlabs.utils.TakeSceenShotListener"></listener>
+		<listener class-name = "org.automationlabs.utils.AnnotationTransformer"></listener>
 	</listeners>
 	<test name = "Make My Trip">
 		<classes>
