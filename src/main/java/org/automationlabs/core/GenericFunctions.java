@@ -14,25 +14,71 @@ public class GenericFunctions extends BaseDriver{
 	
 	String browerType;
 	
-	public WebDriver getDriver() {
-		System.out.println("driver: " + driver);
-		return driver;
+	public boolean isWindows(String OS) {
+		return (OS.contains("win"));
+	}
+	
+	public boolean isMac(String OS) {
+		return (OS.contains("mac"));
+	}
+	
+	public boolean isUnix(String OS) {
+		return (OS.contains("nix") || OS.contains("nux") || OS.contains("aix"));
 	}
 	
 	public WebDriver StartDriver(String browserType) {
 		this.browerType = browserType;
-		if(browserType.toLowerCase().equals("chrome")) {
-			System.setProperty("webdriver.chrome.driver", "." + File.separator + "Resources" + 
-					File.separator + "drivers" + File.separator + "chromedriver" + File.separator + "chromedriver.exe");
-			this.driver = new ChromeDriver();
-			
+		String systemType = System.getProperty("os.name").toLowerCase();
+		
+		System.out.println("System type: " + systemType);
+		
+		if(isWindows(systemType)) {
+			if(browserType.toLowerCase().equals("chrome")) {
+				System.setProperty("webdriver.chrome.driver", "." + File.separator + "Resources" + 
+						File.separator + "drivers" + File.separator+ "windows" + File.separator + "chromedriver" + File.separator + "chromedriver.exe");
+				this.driver = new ChromeDriver();
+				
+			}
+			else if(browserType.toLowerCase().equals("firefox")) {
+				System.setProperty("webdriver.gecko.driver", "." + File.separator + "resources" + 
+						File.separator + "drivers" + File.separator + "windows" + File.separator +"ffdriver" + File.separator + "geckodriver.exe");
+				
+				this.driver = new FirefoxDriver();
+			}
 		}
-		else if(browserType.toLowerCase().equals("firefox")) {
-			System.setProperty("webdriver.gecko.driver", "." + File.separator + "resources" + 
-					File.separator + "drivers" + File.separator + "ffdriver" + File.separator + "geckodriver.exe");
-			
-			this.driver = new FirefoxDriver();
+		else if (isMac(systemType)) {
+			if(browserType.toLowerCase().equals("chrome")) {
+				System.setProperty("webdriver.chrome.driver", "." + File.separator + "Resources" + 
+						File.separator + "drivers" + File.separator+ "mac" + File.separator + "chromedriver" + File.separator + "chromedriver.exe");
+				this.driver = new ChromeDriver();
+				
+			}
+			else if(browserType.toLowerCase().equals("firefox")) {
+				System.setProperty("webdriver.gecko.driver", "." + File.separator + "resources" + 
+						File.separator + "drivers" + File.separator + "mac" + File.separator +"ffdriver" + File.separator + "geckodriver.exe");
+				
+				this.driver = new FirefoxDriver();
+			}
 		}
+		else if(isUnix(systemType)) {
+			if(browserType.toLowerCase().equals("chrome")) {
+				System.setProperty("webdriver.chrome.driver", "." + File.separator + "Resources" + 
+						File.separator + "drivers" + File.separator+ "linux" + File.separator + "chromedriver" + File.separator + "chromedriver.exe");
+				this.driver = new ChromeDriver();
+				
+			}
+			else if(browserType.toLowerCase().equals("firefox")) {
+				System.setProperty("webdriver.gecko.driver", "." + File.separator + "resources" + 
+						File.separator + "drivers" + File.separator + "linux" + File.separator +"ffdriver" + File.separator + "geckodriver.exe");
+				
+				this.driver = new FirefoxDriver();
+			}
+		}
+		else {
+			System.out.println("Your OS is not supported please add if condition and "
+					+ "selenium browser driver");
+		}
+
 		return this.driver;
 	}
 	

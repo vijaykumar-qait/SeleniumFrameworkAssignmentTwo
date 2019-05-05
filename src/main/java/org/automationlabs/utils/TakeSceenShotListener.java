@@ -14,7 +14,7 @@ import org.testng.ITestResult;
 
 public class TakeSceenShotListener extends BaseDriver implements ITestListener {
 	
-	String filePath = "." + File.separator + "Resources" + File.separator+"screenshots/"; 
+	String filePath = "." + File.separator + "Resources" + File.separator+"screenshots"+File.separator; 
 	
 	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub

@@ -4,6 +4,7 @@
 	<listeners>
 		<listener class-name = "org.automationlabs.utils.TakeSceenShotListener"></listener>
 		<listener class-name = "org.automationlabs.utils.AnnotationTransformer"></listener>
+		<listener class-name = "org.automationlabs.reports.ExtentReportListener"></listener>
 	</listeners>
 	<test name = "Make My Trip">
 		<classes>
